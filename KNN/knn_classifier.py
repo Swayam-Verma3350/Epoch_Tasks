@@ -276,4 +276,21 @@ weighted_preds = [reverse_label_map[p] for p in wpreds]
  
 for i in range(len(test_data)):
     print(f"Test sample {i+1}: Normal={normal_preds[i]}, Weighted={weighted_preds[i]}")
+
+
+# -------------------------
+# User Input Prediction
+# -------------------------
+ 
+print("\n--- Predict Your Own Fruit ---")
+print("Color codes: 0 = Yellow, 1 = Red, 2 = Orange")
+ 
+weight = float(input("\nEnter weight (in grams): "))
+size   = float(input("Enter size (in cm): "))
+color  = float(input("Enter color (0, 1, or 2): "))
+ 
+user_input = np.array([[weight, size, color]])
+ 
+pred = reverse_label_map[knn.predict(user_input)[0]]
+print(f"\nPredicted fruit: {pred}")
  
